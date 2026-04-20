@@ -1051,12 +1051,20 @@
       };
 
       try{
-        const res=await fetch('https://arlyn-studio-backend.onrender.com/api/contact',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify(payload)
+        const res = await fetch('https://arlyn-studio-backend.onrender.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
-        if(!res.ok)throw new Error('Server error');
+
+        const data = await res.json().catch(() => ({}));
+
+        console.log("STATUS:", res.status);
+        console.log("RESPONSE:", data);
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Server error');
+        }
         // Show success
         document.getElementById('formContainer').style.display='none';
         document.getElementById('formSuccess').classList.add('show');

@@ -130,8 +130,11 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
         #pricing{background:var(--cream-dark);border-bottom:1px solid var(--ink)}
         .pricing-intro{text-align:center;margin-bottom:3.5rem}
         .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-        .price-card{background:var(--cream);padding:2.8rem 2.4rem;position:relative;transition:transform .25s}
-        .price-card:hover{transform:translateY(-4px)}
+.price-card{
+  background:var(--cream);padding:2.8rem 2.4rem;position:relative;
+  transition:transform .25s;
+  display:flex;flex-direction:column;
+}        .price-card:hover{transform:translateY(-4px)}
         .price-card.featured{background:var(--ink);color:var(--cream)}
         .price-tag-label{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;display:block}
         .price-card.featured .price-tag-label{color:var(--red)}
@@ -145,8 +148,7 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
         .price-card.featured .price-desc{color:rgba(245,240,232,.6)}
         .price-rule{width:24px;height:1px;background:var(--rule);margin-bottom:1.5rem}
         .price-card.featured .price-rule{background:rgba(245,240,232,.15)}
-        .price-features{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-        .price-features li{font-size:.87rem;color:#2A2724;display:flex;align-items:baseline;gap:.5rem}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;flex:1}        .price-features li{font-size:.87rem;color:#2A2724;display:flex;align-items:baseline;gap:.5rem}
         .price-card.featured .price-features li{color:rgba(245,240,232,.7)}
         .price-features li::before{content:'—';color:var(--red);font-size:.75rem;flex-shrink:0}
         .price-badge{position:absolute;top:1.4rem;right:1.4rem;font-family:var(--sans);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--red);color:var(--cream);padding:.25rem .7rem}
@@ -226,7 +228,7 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
 
 /* responsive */
 @media(max-width:900px){
-  .work-grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:repeat(2,1fr);}
 }
         /* ── CLIENTS ── */
         #clients{padding:5rem 5vw}
@@ -391,9 +393,8 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
         /* ── REVEAL ── */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
         .reveal.visible{opacity:1;transform:translateY(0)}
-.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-
-        /* ── RESPONSIVE ── */
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}        /* ── RESPONSIVE ── */
         @media(max-width:900px){
           html{cursor:auto}
           #cur,#cur-ring{display:none}
@@ -446,7 +447,8 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
           .proc-step:nth-child(-n+3){border-top:1px solid rgba(245,240,232,.1)}
           .proc-step:first-child{border-top:none}
 
-.work-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:2px}
+.work-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+.pricing-grid{grid-template-columns:1fr;gap:16px}
           #testimonials .testi-grid{grid-template-columns:1fr}
           .ww-grid{grid-template-columns:1fr}
 
@@ -752,6 +754,17 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
 }
         #work .work-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
 #work .work-top p{font-size:1.05rem;color:#2A2724;line-height:1.78;margin-bottom:1.8rem}
+        .price-cta{
+  display:block;margin-top:2rem;
+  font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  text-align:center;padding:.85rem 1.4rem;
+  background:transparent;color:var(--ink);border:1px solid var(--ink);
+  text-decoration:none;transition:background .2s,color .2s,border-color .2s;
+  cursor:pointer;width:100%;
+}
+.price-cta:hover{background:var(--ink);color:var(--cream)}
+.price-card.featured .price-cta{color:var(--cream);border-color:rgba(245,240,232,.4)}
+.price-card.featured .price-cta:hover{background:var(--red);border-color:var(--red)}
     </style>
 </head>
 <body>
@@ -864,77 +877,6 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
     </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
-    <div class="pricing-intro reveal">
-        <span class="s-label" style="display:block;text-align:center">Transparent Pricing</span>
-        <h2 class="s-h2" style="text-align:center">It's affordable quality.<br><em>Simple as that.</em></h2>
-        <p style="margin-top:1rem;font-size:1rem;color:#3A3632;max-width:460px;margin:1rem auto 0">Professional websites don't have to cost a fortune. Fixed pricing, no hidden fees, no nasty surprises.</p>
-    </div>
-    <div class="pricing-grid reveal" style="margin-top:3rem">
-        <div class="price-card">
-            <span class="price-tag-label">Starter</span>
-            <div class="price-num" style="display:flex;align-items:baseline;gap:.6rem">
-                <span style="font-size:2.2rem;font-weight:bold">£599</span>
-                <span style="text-decoration:line-through;color:#999;font-size:1.1rem">£799</span>
-            </div>
-            <span class="price-from">one-time</span>
-            <div class="price-name">Brand &amp; One-Pager</div>
-            <p class="price-desc">A polished single-page site with your logo, brand colours, and everything a new business needs to look credible and convert online.</p>
-            <div class="price-rule"></div>
-            <ul class="price-features">
-                <li>Logo &amp; basic identity</li>
-                <li>Single-page website</li>
-                <li>Mobile optimised</li>
-                <li>Contact form + Core Web Vitals</li>
-                <li>Launched in &lt;1 week*</li>
-            </ul>
-        </div>
-        <div class="price-card featured">
-            <span class="price-badge">Most Popular</span>
-            <span class="price-tag-label">Growth</span>
-            <div class="price-num" style="display:flex;align-items:baseline;gap:.6rem">
-                <span style="font-size:2.2rem;font-weight:bold">£1,124</span>
-                <span style="text-decoration:line-through;color:#999;font-size:1.1rem">£1,499</span>
-            </div>
-            <span class="price-from">one-time</span>
-            <div class="price-name">Full Website</div>
-            <p class="price-desc">A multi-page conversion machine — professional copy, brand identity, SEO structure, and the integrations you need to win customers online.</p>
-            <div class="price-rule"></div>
-            <ul class="price-features">
-                <li>Full brand identity</li>
-                <li>Up to 6 pages</li>
-                <li>Professional copywriting</li>
-                <li>Full SEO foundations</li>
-                <li>1 integration included</li>
-                <li>Launched in &lt;2 weeks*</li>
-            </ul>
-        </div>
-        <div class="price-card">
-            <span class="price-tag-label">Premium</span>
-            <div class="price-num" style="display:flex;align-items:baseline;gap:.6rem">
-                <span style="font-size:2.2rem;font-weight:bold">£1,874</span>
-                <span style="text-decoration:line-through;color:#999;font-size:1.1rem">£2,499</span>
-            </div>
-            <span class="price-from">one-time</span>
-            <div class="price-name">Brand &amp; Premium Site</div>
-            <p class="price-desc">Our most complete offering — deep strategy, full brand system, bespoke site with custom logic, multiple integrations, and priority support included.</p>
-            <div class="price-rule"></div>
-            <ul class="price-features">
-                <li>Full brand strategy</li>
-                <li>Unlimited pages</li>
-                <li>Full copywriting</li>
-                <li>Custom animations &amp; logic</li>
-                <li>Multiple integrations</li>
-                <li>Priority support included</li>
-                <li>Launched in &lt;1 month*</li>
-            </ul>
-        </div>
-    </div>
-    <p class="reveal" style="text-align:center;font-size:.88rem;color:var(--gray);margin-top:2.5rem;font-family:var(--sans);letter-spacing:.04em">All prices include design, build, and launch. Ongoing support from £50/mo. <a href="#contact" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px">Got a question? Just ask →</a></p>
-    <p class="reveal" style="text-align:center;font-size:.65rem;color:gray;margin-top:1rem;font-family:var(--sans);letter-spacing:.04em">*These are targets, and are usually met. They are not a 100% guarantee.</p>
-</section>
-
 <!-- PROCESS -->
 <section id="process">
     <div class="proc-intro">
@@ -1041,6 +983,80 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
         </div>
     </div>
 </section>-->
+
+
+<!-- PRICING -->
+<section id="pricing">
+    <div class="pricing-intro reveal">
+        <h2 class="s-h2" style="text-align:center">It's affordable quality.<br><em>Simple as that.</em></h2>
+        <p style="margin-top:1rem;font-size:1rem;color:#3A3632;max-width:460px;margin:1rem auto 0">Professional websites don't have to cost a fortune. Fixed pricing, no hidden fees, no nasty surprises.</p>
+    </div>
+    <div class="pricing-grid reveal" style="margin-top:3rem">
+        <div class="price-card">
+            <span class="price-tag-label">Starter</span>
+            <div class="price-num" style="display:flex;align-items:baseline;gap:.6rem">
+                <span style="font-size:2.2rem;font-weight:bold">£599</span>
+                <span style="text-decoration:line-through;color:#999;font-size:1.1rem">£799</span>
+            </div>
+            <span class="price-from">one-time</span>
+            <div class="price-name">Brand &amp; One-Pager</div>
+            <p class="price-desc">A polished single-page site with your logo, brand colours, and everything a new business needs to look credible and convert online.</p>
+            <div class="price-rule"></div>
+            <ul class="price-features">
+                <li>Logo &amp; basic identity</li>
+                <li>Single-page website</li>
+                <li>Mobile optimised</li>
+                <li>Contact form + Core Web Vitals</li>
+                <li>Launched in &lt;1 week*</li>
+            </ul>
+            <a href="#contact" class="price-cta" onclick="prefillBudget('&lt;£1,000')">Claim 25% Off — Get Started →</a>
+        </div>
+        <div class="price-card featured">
+            <span class="price-badge">Most Popular</span>
+            <span class="price-tag-label">Growth</span>
+            <div class="price-num" style="display:flex;align-items:baseline;gap:.6rem">
+                <span style="font-size:2.2rem;font-weight:bold">£1,124</span>
+                <span style="text-decoration:line-through;color:#999;font-size:1.1rem">£1,499</span>
+            </div>
+            <span class="price-from">one-time</span>
+            <div class="price-name">Full Website</div>
+            <p class="price-desc">A multi-page conversion machine — professional copy, brand identity, SEO structure, and the integrations you need to win customers online.</p>
+            <div class="price-rule"></div>
+            <ul class="price-features">
+                <li>Full brand identity</li>
+                <li>Up to 6 pages</li>
+                <li>Professional copywriting</li>
+                <li>Full SEO foundations</li>
+                <li>1 integration included</li>
+                <li>Launched in &lt;2 weeks*</li>
+            </ul>
+            <a href="#contact" class="price-cta" onclick="prefillBudget('£1,000–£1,500')">Claim 25% Off — Get Started →</a>
+        </div>
+        <div class="price-card">
+            <span class="price-tag-label">Premium</span>
+            <div class="price-num" style="display:flex;align-items:baseline;gap:.6rem">
+                <span style="font-size:2.2rem;font-weight:bold">£1,874</span>
+                <span style="text-decoration:line-through;color:#999;font-size:1.1rem">£2,499</span>
+            </div>
+            <span class="price-from">one-time</span>
+            <div class="price-name">Brand &amp; Premium Site</div>
+            <p class="price-desc">Our most complete offering — deep strategy, full brand system, bespoke site with custom logic, multiple integrations, and priority support included.</p>
+            <div class="price-rule"></div>
+            <ul class="price-features">
+                <li>Full brand strategy</li>
+                <li>Unlimited pages</li>
+                <li>Full copywriting</li>
+                <li>Custom animations &amp; logic</li>
+                <li>Multiple integrations</li>
+                <li>Priority support included</li>
+                <li>Launched in &lt;1 month*</li>
+            </ul>
+            <a href="#contact" class="price-cta" onclick="prefillBudget('£1,500–£2,000')">Claim 25% Off — Get Started →</a>
+        </div>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:.88rem;color:var(--gray);margin-top:2.5rem;font-family:var(--sans);letter-spacing:.04em">All prices include design, build, and launch. Ongoing support from £50/mo. <a href="#contact" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px">Got a question? Just ask →</a></p>
+    <p class="reveal" style="text-align:center;font-size:.65rem;color:gray;margin-top:1rem;font-family:var(--sans);letter-spacing:.04em">*These are targets, and are usually met. They are not a 100% guarantee.</p>
+</section>
 
 <!-- DISCOUNT -->
 <section id="discount" style="border-bottom:1px solid rgba(200,52,26,.4)">
@@ -1187,7 +1203,8 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
                         <select class="fs" id="f-budget" name="budget" required>
                             <option value="" disabled selected hidden>Select budget range</option>
                             <option>&lt;£1,000</option>
-                            <option>£1,000–£2,000</option>
+                            <option>£1,000–£1,500</option>
+                            <option>£1,500–£2,000</option>
                             <option>£2,000–£5,000</option>
                             <option>£5,000+</option>
                         </select>
@@ -1498,6 +1515,17 @@ document.getElementById('contactForm').addEventListener('submit', async function
     errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
     });
+    function prefillBudget(value) {
+  setTimeout(() => {
+    const sel = document.getElementById('f-budget');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text === value) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  }, 600);
+}
 </script>
 </body>
 </html>

@@ -765,6 +765,12 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
 .price-cta:hover{background:var(--ink);color:var(--cream)}
 .price-card.featured .price-cta{color:var(--cream);border-color:rgba(245,240,232,.4)}
 .price-card.featured .price-cta:hover{background:var(--red);border-color:var(--red)}
+        #work .work-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
+#work .work-top p{font-size:1.05rem;color:#2A2724;line-height:1.78;margin-bottom:1.8rem}
+
+@media(max-width:900px){
+  #work .work-top{grid-template-columns:1fr;gap:2rem}
+}
     </style>
 </head>
 <body>
@@ -1250,10 +1256,10 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
                 <p id="captcha-err" style="font-family:var(--sans);font-size:.62rem;color:var(--red);margin-top:.5rem;display:none">Please confirm you're not a robot.</p>
 
                 <!-- ToS -->
-                <div class="tos-wrap">
+                <!--<div class="tos-wrap">
                     <input type="checkbox" class="tos-check" id="f-tos" name="tos" required>
                     <label class="tos-text" for="f-tos">I agree to Arlyn Studio's <a href="/privacy" target="_blank">Privacy Policy</a> and <a href="/terms" target="_blank">Terms of Service</a>. I understand my enquiry data will be used to respond to my request and may be retained for up to 12 months.</label>
-                </div>
+                </div>-->
 
                 <!-- Submit -->
                 <div class="form-submit-wrap">
@@ -1375,10 +1381,9 @@ window.addEventListener('load', positionNav);*/
     }
 
     function checkSubmitEnable(){
-      const tos=document.getElementById('f-tos').checked;
-      document.getElementById('submitBtn').disabled=!(captchaDone&&tos);
-    }
-    document.getElementById('f-tos').addEventListener('change',checkSubmitEnable);
+  document.getElementById('submitBtn').disabled = !captchaDone;
+}
+    document.getElementById('submitBtn').addEventListener('click',checkSubmitEnable);
 
     // ── FORM SUBMIT ──
 

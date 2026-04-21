@@ -119,7 +119,7 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
 
         /* ── WHAT WE BUILD (new section) ── */
         #what-we-build{background:var(--cream);padding:7rem 5vw}
-        .ww-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:4rem}
+        .ww-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:4rem}
         .ww-card{padding:2.6rem 2.2rem;background:var(--cream-dark);border-top:2px solid transparent;transition:border-color .25s,transform .25s}
         .ww-card:hover{border-top-color:var(--red);transform:translateY(-3px)}
         .ww-icon{font-size:1.3rem;margin-bottom:1.2rem;color:var(--red)}
@@ -129,7 +129,7 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
         /* ── PRICING ── */
         #pricing{background:var(--cream-dark);border-bottom:1px solid var(--ink)}
         .pricing-intro{text-align:center;margin-bottom:3.5rem}
-        .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+        .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
         .price-card{background:var(--cream);padding:2.8rem 2.4rem;position:relative;transition:transform .25s}
         .price-card:hover{transform:translateY(-4px)}
         .price-card.featured{background:var(--ink);color:var(--cream)}
@@ -182,22 +182,52 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
         .mq-dot{display:inline-block;width:5px;height:5px;background:var(--red);border-radius:50%;flex-shrink:0}
         @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-        /* ── WORK ── */
-        #work .work-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
-        #work .work-top p{font-size:1.05rem;color:#2A2724;line-height:1.78;margin-bottom:1.8rem}
-        .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
-        .work-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;display:flex;align-items:flex-end}
-        .wc-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;font-weight:900;color:rgba(13,13,13,.07);user-select:none;transition:transform .65s ease}
-        .work-card:hover .wc-bg{transform:scale(1.05)}
-        .wc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.78) 0%,transparent 55%);opacity:0;transition:opacity .35s}
-        .work-card:hover .wc-ov{opacity:1}
-        .wc-info{position:relative;z-index:2;padding:1.6rem 1.8rem;width:100%;transform:translateY(110%);transition:transform .38s ease}
-        .work-card:hover .wc-info{transform:translateY(0)}
-        .wc-cat{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem}
-        .wc-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:.4rem}
-        .wc-link{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.65);text-decoration:none;transition:color .2s}
-        .wc-link:hover{color:var(--cream)}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 
+.work-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  display:flex;flex-direction:column;
+  background:white;
+  border:8px solid white;
+  border-bottom:0;
+  transition:transform .25s, box-shadow .25s;
+}
+.work-card:hover{transform:translateY(-4px);}
+
+.wc-img{
+  width:100%;aspect-ratio:16/9;
+  background-size:cover;background-position:top center;
+  flex-shrink:0;
+}
+
+.wc-footer{
+  background:white;
+  padding:1.1rem 1rem 1rem;
+  border-top:1px solid rgba(13,13,13,0.06);
+  flex-shrink:0;
+}
+
+.wc-cat{
+  font-family:var(--sans);font-size:.6rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.25rem;
+}
+
+.wc-title{
+  font-family:var(--serif);font-size:1rem;font-weight:700;
+  color:var(--ink);letter-spacing:-0.02em;
+}
+
+/* remove or leave empty — no longer used */
+.wc-bg{}
+.wc-ov{}
+.wc-info{}
+.wc-link{}
+
+/* responsive */
+@media(max-width:900px){
+  .work-grid{grid-template-columns:1fr}
+}
         /* ── CLIENTS ── */
         #clients{padding:5rem 5vw}
         .client-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:3.5rem}
@@ -361,6 +391,7 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
         /* ── REVEAL ── */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
         .reveal.visible{opacity:1;transform:translateY(0)}
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 
         /* ── RESPONSIVE ── */
         @media(max-width:900px){
@@ -415,7 +446,7 @@ body.no-topbar-mode #hero{padding-top:calc(var(--nav-h) + 4rem)}
           .proc-step:nth-child(-n+3){border-top:1px solid rgba(245,240,232,.1)}
           .proc-step:first-child{border-top:none}
 
-          .work-grid{grid-template-columns:1fr}
+.work-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:2px}
           #testimonials .testi-grid{grid-template-columns:1fr}
           .ww-grid{grid-template-columns:1fr}
 
@@ -719,6 +750,8 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
     );
   }
 }
+        #work .work-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
+#work .work-top p{font-size:1.05rem;color:#2A2724;line-height:1.78;margin-bottom:1.8rem}
     </style>
 </head>
 <body>
@@ -954,29 +987,40 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
         </div>
     </div>
     <div class="work-grid">
-        <div class="work-card reveal" style="background:#C8BFB0">
-            <div class="wc-bg">BD</div>
-            <div class="wc-ov"></div>
-            <div class="wc-info">
-                <div class="wc-cat">Delivery &amp; Logistics</div>
-                <div class="wc-title">Bespoke Deliveries</div>
-                <a href="https://bespokedeliveries.uk" target="_blank" rel="noopener" class="wc-link">bespokedeliveries.uk ↗</a>
-            </div>
-        </div>
-        <div class="work-card reveal" style="background:#B4BEC4;transition-delay:.08s">
-            <div class="wc-bg">AB</div>
-            <div class="wc-ov"></div>
-            <div class="wc-info">
+        <div class="work-card reveal">
+            <div class="wc-img" style="background-image:url('https://gyazo.com/5ec84cd08403a20002e2ac6b023bbd2b/raw')"></div>
+            <div class="wc-footer">
                 <div class="wc-cat">Kids Books</div>
                 <div class="wc-title">Archie and Bert</div>
-                <a href="https://archieandbert.com" target="_blank" rel="noopener" class="wc-link">archieandbert.com ↗</a>
+            </div>
+        </div>
+        <div class="work-card reveal" style="transition-delay:.08s">
+            <div class="wc-img" style="background-image:url('https://gyazo.com/fa22ab554e11d4bc9bf858051fd2151e/raw')"></div>
+            <div class="wc-footer">
+                <div class="wc-cat">E-Commerce</div>
+                <div class="wc-title">AromaHill</div>
+            </div>
+        </div>
+        <div class="work-card reveal" style="transition-delay:.16s">
+            <div class="wc-img" style="background-image:url('https://gyazo.com/88b0816e893bc00066242db97832e8c9/raw')"></div>
+            <div class="wc-footer">
+                <div class="wc-cat">Delivery &amp; Logistics</div>
+                <div class="wc-title">Bespoke Deliveries</div>
+            </div>
+        </div>
+        <div class="work-card reveal" style="transition-delay:.24s">
+            <div class="wc-img" style="background-image:url('https://gyazo.com/c9906fe5329dde1d0f28beef9d356977/raw')"></div>
+            <div class="wc-footer">
+                <div class="wc-cat">Productivity</div>
+                <div class="wc-title">Lightnify</div>
             </div>
         </div>
     </div>
+
 </section>
 
 <!-- CLIENTS -->
-<section id="clients" style="border-bottom:1px solid var(--ink)">
+<!--<section id="clients" style="border-bottom:1px solid var(--ink)">
     <div class="client-intro">
         <div class="reveal">
             <span class="s-label">Trusted By</span>
@@ -996,7 +1040,7 @@ nav#mainNav .hbg span{display:block;width:22px;height:2px;background:var(--ink);
             <a href="https://archieandbert.com" target="_blank" rel="noopener" class="client-link">archieandbert.com</a>
         </div>
     </div>
-</section>
+</section>-->
 
 <!-- DISCOUNT -->
 <section id="discount" style="border-bottom:1px solid rgba(200,52,26,.4)">
